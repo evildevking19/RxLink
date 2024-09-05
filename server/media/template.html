@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Prescription</title>
+  </head>
+  <style>
+    body {
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 20px;
+      font-family: Arial;
+    }
+    #drugs-table {
+      border-collapse: collapse;
+      border: 1px solid #555;
+      width: 100%;
+    }
+    #drugs-table td,
+    #drugs-table th {
+      padding: 8px 12px;
+      border: 1px solid #555;
+    }
+    p {
+      margin: 2px 0;
+    }
+  </style>
+  <body>
+    <div>
+      <h2 style="text-align: center; margin-bottom: 10px">Verified ePrescription</h2>
+      <p style="text-align: center; font-size: 18px">
+        <strong>DISPENSING TOKEN</strong> for an electronic prescription - To be printed for record keeping purposes only.
+      </p>
+
+      <table style="margin-top: 30px">
+        <tbody>
+          <tr style="padding: 20px 0">
+            <td>
+              <div>
+                <p><strong>Doctor Details</strong></p>
+                <p>{{doctorName}} / {{doctorEmail}} / {{doctorGMC}} / {{doctorPractice}}</p>
+              </div>
+            </td>
+          </tr>
+          <tr style="height: 50px">
+            <td>
+              <div style="float: left; height: 100%">
+                <div>
+                  <p><strong>Patient Details</strong></p>
+                  <p>{{patientName}} / {{patientNHS}} / {{patientBirthday}}</p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin-bottom: 10px">DRUGS:</h3>
+      <table id="drugs-table">
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Dosage Instruction</td>
+            <td>Notes</td>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each drugs}}
+          <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.count}}</td>
+            <td>{{this.notes}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <div style="text-align: right; margin-top: 30px">
+        <strong style="font-size: 18px">Signed : </strong>{{doctorName}} ({{doctorGMC}})
+      </div>
+    </div>
+    <div>
+      <table style="width: 100%; border: 0; margin-top: 40px; margin-bottom: 10px">
+        <tbody>
+          <tr>
+            <td align="left" width="80px">
+              <img src="http://144.126.206.109:8080/media/health.png" alt="plus" style="width: 100%" />
+            </td>
+            <td width="30px" align="center">
+              <div style="border-right: 5px solid #4a9cff; width: 0px; height: 40px"></div>
+            </td>
+            <td>
+                <p style="margin: 0; font-size: 18px; color: #4a9cff">{{doctorName}}</p>
+                <span style="margin: 0; font-size: 16px">E-Sign ID </span><a href="{{host}}/verify/{{rid}}/{{patientBirthday}}" style="margin: 0 0 0 10px; font-size: 16px">{{rid}}</a>
+                <p style="margin: 3px 0 0 0; font-size: 16px">{{created}}</p>
+            </td>
+            <td align="right" width="80px">
+              <img src="http://144.126.206.109:8080/{{qrcode}}" alt="QRCode" style="width: 100%" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="text-align: center; color: #4a9cff; font-size: 16px">
+        For e-signature verification or queries <br/>Contact: scripts@rxlink.com or +44 (0) 330 113 7894
+      </p>
+    </div>
+  </body>
+</html>

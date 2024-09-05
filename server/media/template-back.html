@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Prescription</title>
+  </head>
+  <style>
+    body {
+      font-size: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100vh;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 20px;
+    }
+    #drugs-table {
+      border-collapse: collapse;
+      border: 1px solid #555;
+      width: 100%;
+    }
+    #drugs-table td,
+    #drugs-table th {
+      padding: 8px 12px;
+      border: 1px solid #555;
+    }
+    p {
+      margin: 2px 0;
+    }
+  </style>
+  <body>
+    <div>
+      <h1 style="text-align: center; margin-bottom: 10px">PRESCRIPTION DETAILS</h1>
+      <p style="text-align: center; font-size: 20px">
+        <strong>DISPENSING TOKEN</strong> for an electronic prescription - To be printed for record keeping purposes only.
+      </p>
+
+      <table style="margin-top: 30px">
+        <tbody>
+          <tr style="padding: 20px 0">
+            <td>
+              <img src="{{host}}/media/logo.png" alt="Doctor" style="width: 80px; margin: 20px" />
+            </td>
+            <td>
+              <div>
+                <p><strong>Doctor Details</strong></p>
+                <p><strong>Name</strong> - {{doctorName}}</p>
+                <p><strong>Email</strong> - {{doctorEmail}}</p>
+                <p><strong>Phone</strong> - {{doctorPhone}}</p>
+                <p><strong>GMC Number</strong> - {{doctorGMC}}</p>
+                <p><strong>Practice</strong> - {{doctorPractice}}</p>
+              </div>
+            </td>
+          </tr>
+          <tr style="height: 150px">
+            <td>
+              <img src="{{host}}/media/logo.png" alt="Patient" style="width: 80px; margin: 20px" />
+            </td>
+            <td>
+              <div style="float: left; height: 100%">
+                <div>
+                  <p><strong>Patient Details</strong></p>
+                  <p><strong>Name</strong> - {{patientName}}</p>
+                  <p><strong>Email</strong> - {{patientEmail}}</p>
+                  <p><strong>Phone</strong> - {{patientPhone}}</p>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h1 style="margin-bottom: 10px">DRUGS:</h1>
+      <table id="drugs-table">
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Dosage Instruction</td>
+            <td>Notes</td>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each drugs}}
+          <tr>
+            <td>{{this.name}}</td>
+            <td>{{this.count}}</td>
+            <td>{{this.notes}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <div style="text-align: right; margin-top: 30px">
+        <strong style="font-size: 20px">Signed : </strong>{{doctorName}} ({{doctorGMC}})
+      </div>
+    </div>
+    <div>
+      <table style="width: 100%; border: 0; margin-top: 30px">
+        <tbody>
+          <tr>
+            <td align="left" width="120px">
+              <img src="{{host}}/media/health.png" alt="plus" style="width: 100%" />
+            </td>
+            <td width="30px" align="center">
+              <div style="border-right: 5px solid red; width: 0px; height: 40px"></div>
+            </td>
+            <td>
+                <p style="margin: 0; font-size: 24px; color: #fd657f">{{doctorName}}</p>
+                <span style="margin: 0; font-size: 20px">E-Sign ID </span><a href="{{host}}/verify/{{rid}}" style="margin: 0 0 0 10px; font-size: 20px">{{rid}}</a>
+                <p style="margin: 0; font-size: 20px">{{created}}</p>
+            </td>
+            <td align="right" width="220px">
+              <img src="{{host}}/{{qrcode}}" alt="QRCode" style="width: 120px" />
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="text-align: center; color: #fd657f; font-size: 20px">
+        For e-signature verification or queries Contact: scripts@rxlink.com or +44 (0) 330 113 7894
+      </p>
+    </div>
+  </body>
+</html>

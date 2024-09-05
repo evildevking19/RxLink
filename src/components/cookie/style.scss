@@ -1,0 +1,33 @@
+  .cookie-btn {
+      outline: none;
+      background-color: transparent;
+      border: 0;
+      padding: 10px 20px;
+      margin-right: 10px;
+      border: 2px solid #000;
+      color: #000;
+      transition: all .5s ease-in-out;
+      cursor: pointer;
+  
+      &:hover {
+          color: #fff;
+          background-color: #000;
+      }
+  }
+  
+  .body-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      opacity: 0;
+      transition: all 0.3s ease-in-out 0.5s;
+      z-index: -1;
+  
+      &.is-visible {
+          opacity: 1;
+          z-index: 6;
+      }
+  }

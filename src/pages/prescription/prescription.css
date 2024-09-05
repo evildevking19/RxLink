@@ -1,0 +1,33 @@
+.drugs-table {
+  margin-top: 24px;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+.drugs-table thead {
+  background-color: #b4b4b4;
+  color: white;
+}
+.drugs-table th {
+  text-align: left;
+  padding: 14px 12px;
+}
+.drugs-table td {
+  padding: 6px 12px;
+}
+.drugs-table td .MuiInputBase-root {
+  width: 100%;
+}
+.drug-field {
+  padding: 0;
+  height: 33px;
+}
+.drugs-table .MuiButtonBase-root, .drugs-table .MuiInputBase-root {
+  border-bottom: 1px solid #ccc;
+}
+#button-add-drug {
+  cursor: pointer;
+}
+#button-add-drug:hover {
+  background-color: #ccc;
+}

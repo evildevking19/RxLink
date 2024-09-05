@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; color: #333; background-color: #f4f4f4; padding: 20px; }
+        .container { background-color: #fff; padding: 20px; border-radius: 10px; border: 1px solid #d9d9d9; max-width: 600px; margin: auto; }
+        .header { background-color: #4a9cff; color: #ffffff; padding: 10px; text-align: center; border-radius: 5px 5px 0 0; }
+        .content { padding: 20px; }
+        .footer { margin-top: 20px; text-align: center; font-size: 12px; color: #aaa; }
+        .prescription { background-color: #eef; padding: 15px; margin-top: 20px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="https://rx-link.co.uk/media/logo.png" alt="Rx-Link Logo" style="max-height: 80px;">
+        </div>
+        <div class="content">
+            <h2>Prescription Details</h2>
+            <p>Hello {{{data.patient}}},</p>
+            <p>Your prescription is ready. Below are the details:</p>
+            <div class="prescription">
+                <p><strong>Medication:</strong> [MEDICATION NAME]</p>
+                <p><strong>Dosage:</strong> [DOSAGE DETAILS]</p>
+                <p><strong>Instructions:</strong> [INSTRUCTIONS]</p>
+                <p><strong>Prescribing Doctor:</strong> {{{data.doctor}}}</p>
+            </div>
+            <p>Please visit our website or contact us for further assistance.</p>
+        </div>
+        <div class="footer">
+            This is an automated email, please do not reply directly to this message.
+        </div>
+    </div>
+</body>
+</html>

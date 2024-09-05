@@ -1,0 +1,105 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Box, Container, Typography, InputBase, useMediaQuery, Stack, Grid } from '@mui/material';
+import FooterLogo from 'assets/images/main/logo-footer.png';
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
+const FooterItem = ({ title, items }) => {
+  return (
+    <Stack spacing={2} sx={{ minWidth: '151px' }}>
+      <Typography fontSize="20px" color="white" sx={{ letterSpacing: '4px' }}>
+        {title}
+      </Typography>
+      <Stack spacing={1.5}>
+        {items.map((item) => (
+          <Typography key={item} color="white">
+            {item}
+          </Typography>
+        ))}
+      </Stack>
+    </Stack>
+  );
+};
+export default function Footer() {
+  const isMobile = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+  return (
+    <>
+      <footer>
+        <Container maxWidth="lg">
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row',
+              gap: 2,
+              py: 8,
+              px: isMobile ? 0 : 8,
+              justifyContent: 'space-between',
+              alignItems: isMobile ? 'start' : 'end'
+            }}
+          >
+            <Box sx={{ maxWidth: '650px' }}>
+              <img src={FooterLogo} alt="Logo" style={{ width: '200px' }} />
+              <Typography fontSize="20px" color="rgba(255, 255, 255, 0.6)" sx={{ mt: 2 }}>
+                Our team is ready to demonstrate the power of our platform and discuss how we can tailor our services to meet your needs.
+              </Typography>
+            </Box>
+            <div>
+              <Typography color="white" fontSize="20px">
+                Stay informed with rx-link
+              </Typography>
+              <Box
+                sx={{
+                  borderBottom: '1px solid rgb(255, 255, 255, 0.6)',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: '10px'
+                }}
+              >
+                <InputBase placeholder="Type your email address" sx={{ fontSize: '16px', minWidth: '300px', py: 1 }} />
+                <ArrowRightAltIcon color="white" sx={{ fontSize: '36px' }} />
+              </Box>
+            </div>
+          </Box>
+        </Container>
+        <Container maxWidth="lg">
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: isMobile ? 'column' : 'row',
+              gap: 2,
+              px: isMobile ? 0 : 8,
+              pb: 8,
+              justifyContent: 'space-between',
+              alignItems: isMobile ? 'start' : 'end'
+            }}
+          >
+            <Grid container spacing="12">
+              <Grid item xs={6} sm={3}>
+                <FooterItem title="COMPANY" items={['About', 'Contact Us', 'FAQ', 'Pricing']} />
+              </Grid>
+              <Grid item xs={6} sm={3}>
+                <FooterItem title="RESOURCES" items={['Documentation', 'System Status', 'Blogs']} />
+              </Grid>
+              <Grid item xs={6} sm={3}>
+                <FooterItem title="INFORMATION" items={['Promotions', 'Information Center', 'Testimonials']} />
+              </Grid>
+              <Grid item xs={6} sm={3}>
+                <FooterItem title="HELP" items={['Help center', 'Community', 'Sitemap', 'Meeting Room']} />
+              </Grid>
+            </Grid>
+            <FooterItem title="FOLLOW US" items={['FaceBook', 'Twitter', 'LinkedIn', 'Instagram']} />
+          </Box>
+        </Container>
+        <Container maxWidth="xl">
+          <Box sx={{ pt: 3, pb: 6, display: 'flex', justifyContent: 'space-between', borderTop: '1px solid rgba(255, 255, 255, 0.25)' }}>
+            <Box sx={{ display: 'flex', gap: 4 }}>
+              <Link to="/faq">Privacy Policy</Link>
+              <Link to="/contact">Terms & Conditions</Link>
+            </Box>
+            <Typography color="white">© 2024 All Rights Reserved</Typography>
+          </Box>
+        </Container>
+      </footer>
+    </>
+  );
+}
